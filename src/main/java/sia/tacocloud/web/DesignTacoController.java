@@ -43,14 +43,12 @@ public class DesignTacoController {
     }
   }
 
-  //tag::showDesignForm[]
   @GetMapping
   public String showDesignForm(Model model) {
     model.addAttribute("design", new Taco());
     return "design";
   }
 
-  //tag::processDesignValidated[]
   @PostMapping
   public String processDesign(@Valid @ModelAttribute("design") Taco design, Errors errors, Model model) {
     if (errors.hasErrors()) {
@@ -64,9 +62,7 @@ public class DesignTacoController {
     return "redirect:/orders/current";
   }
 
-//end::processDesignValidated[]
 
-  //tag::filterByType[]
   private List<Ingredient> filterByType(
       List<Ingredient> ingredients, Type type) {
     return ingredients
